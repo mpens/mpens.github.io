@@ -200,7 +200,7 @@
 		  </div>
 	</header>
 
-	<section id="fh5co-home" data-section="home" style="background-image: url(images/full_image_2.jpg);" data-stellar-background-ratio="0.5">
+	<section id="fh5co-home" data-section="home" style="background-image: url(images/contabilidad-2.jpg);" data-stellar-background-ratio="0.5">
 		<div class="gradient"></div>
 		<div class="container">
 			<div class="text-wrap">
@@ -604,26 +604,27 @@
 					<form  action="https://formspree.io/pensdavila@gmail.com" method="POST">
 					<div class="form-group ">
 						<label for="name" class="sr-only">Nombre</label>
-						<input id="name" name="name" class="form-control" placeholder="Nombre" type="text">
+						<input id="name" name="name" required="true" class="form-control" placeholder="Nombre" type="text">
 					</div>
 					<div class="form-group ">
 						<label for="email" class="sr-only">Correo Electr&oacute;nico</label>
-						<input id="email" name="email" class="form-control" placeholder="Correo Electr&oacute;nico" type="email">
+						<input id="email" name="email" required="true" class="form-control" placeholder="Correo Electr&oacute;nico" type="email">
 					</div>
 					<div class="form-group ">
 						<label for="phone" class="sr-only">Teléfono</label>
-						<input id="phone" name="phone" class="form-control" placeholder="Teléfono" type="text">
+						<input id="phone" name="phone" required="true" class="form-control" placeholder="Teléfono" type="text">
 					</div>
 					<div class="form-group ">
 						<label for="message" class="sr-only">Consulta</label>
-						<textarea name="message" id="message" cols="30" rows="5" class="form-control" placeholder="Consulta"></textarea>
+						<textarea name="message" id="message" required="true" cols="30" rows="5" class="form-control" placeholder="Consulta"></textarea>
 					</div>
-					<div class="form-group ">
+					<!--div class="form-group ">
 						<div class="g-recaptcha" data-sitekey="6Lf8LzoUAAAAAPktY44F_7DnuoTQSu2XqvSspFpG"></div>
-					</div>
+						<div id="recaptcha"></div>
+					</div-->
 
 					<div class="form-group ">
-						<input class="btn btn-primary btn-lg" value="Enviar Consulta" type="submit">
+						<input  id="btn_consulta" class="btn btn-primary btn-lg" value="Enviar Consulta" type="submit">
 					</div>
 					</div>
 					</form>
@@ -712,9 +713,12 @@
 	<script src="js/jquery.magnific-popup.min.js"></script>
 	<script src="js/magnific-popup-options.js"></script>
 	<!-- Google Map -->
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCefOgb1ZWqYtj7raVSmN4PL2WkTrc-KyA&sensor=false"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3dsHgPIf9wMJ15Lihzang8cWCkLn4kOE"></script>
 	<script src="js/google_map.js"></script>
-	<script src='https://www.google.com/recaptcha/api.js'></script>
+	<!--script src='https://www.google.com/recaptcha/api.js'></script-->
+	<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit&hl=es"
+        async defer>
+    </script>
 
 
 	<!-- For demo purposes only styleswitcher ( You may delete this anytime ) -->
@@ -734,15 +738,22 @@
 			});
 		});
 	</script>
-	<!--script type="text/javascript">
 
-		$.ajax({
-		    url: "https://formspree.io/pensdavila@gmail.com",
-		    method: "POST",
-		    data: {message: "hello!"},
-		    dataType: "json"
-		});
-	</script-->
+	<!--script type="text/javascript">
+      var verifyCallback = function(response) {
+        
+        document.getElementById("btn_consulta").removeAttribute("disabled");
+      };
+    
+      var onloadCallback = function() {
+        grecaptcha.render('recaptcha', {
+          'sitekey' : '6Lf8LzoUAAAAAPktY44F_7DnuoTQSu2XqvSspFpG',
+          'callback' : verifyCallback,
+          'theme' : 'ligth'
+        });
+      };
+    </script-->
+
 	<!-- End demo purposes only -->
 
 	<!-- Main JS (Do not remove) -->
